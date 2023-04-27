@@ -1,0 +1,26 @@
+<!-- Envolve os elementos do componente em nosso elemento customizado “coracao-astro”. -->
+<coracao-astro>
+    <button aria-label="Coração">💜</button> × <span>0</span>
+  </coracao-astro>
+  
+  <script>
+    // Define o comportamento para nosso novo tipo de elemento HTML.
+    class CoracaoAstro extends HTMLElement {
+      constructor() {
+        super();
+        let contagem = 0;
+  
+        const botaoCoracao = this.querySelector('button');
+        const spanContagem = this.querySelector('span');
+  
+        // Cada vez que o botão é clicado atualiza a contagem.
+        botaoCoracao.addEventListener('click', () => {
+          contagem++;
+          spanContagem.textContent = contagem;
+        });
+      }
+    }
+  
+    // Diz ao navegador para usar a nossa classe CoracaoAstro para elementos <coracao-astro>.
+    customElements.define('coracao-astro', CoracaoAstro);
+  </script>
